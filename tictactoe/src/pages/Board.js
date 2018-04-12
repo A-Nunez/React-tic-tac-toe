@@ -10,8 +10,17 @@ class Board extends Component {
 			board: [0,0,0,0,0,0,0,0,0],
 			// keep track of which player's turn it is
 			turn: "X",
-			playerX: [],
-			playerY: []
+
+			winningCombos: [
+				              [0,1,2],
+											[3,4,5],
+											[6,7,8],
+											[0,3,6],
+											[1,4,7],
+											[2,5,8],
+											[0,4,8],
+											[2,4,6]
+			]
 
 		}
 		// TODO: The game should reset to an unplayed state when a player wins
@@ -21,9 +30,8 @@ class Board extends Component {
 
 	// handleClick takes in a click event and logs the target
 	handleClick(e){
-		console.log(e.target);
-		console.log(this.state.board);
-
+		// console.log(e.target);
+		// console.log(this.state.board);
     let playedSquare = e.target.innerHTML
 
     let newBoard = this.state.board
@@ -38,7 +46,12 @@ class Board extends Component {
 			newBoard[playedSquare] = this.state.turn
 			e.target.innerHTML = newTurn
     }
-		this.checkForWin()
+
+		if (this.checkForWin())
+		{
+        alert("GAME FINISHED " + newTurn + " WON !!!")
+        return
+		}
 
 		if (newTurn === "X")
 		{
@@ -71,10 +84,48 @@ class Board extends Component {
 			}
 		}
 
-		console.log("Winning Array for " + currentTurn + " : is " + playedArray)
-    // let playerArray = newBoard.filter(x => x === currentTurn)
-		// console.log(playerArray)
-    // console.log("Checking for Winning")
+		if (playedArray.length < 3)
+		{
+			 return;  //  No need to check
+		}
+
+		console.log("Played Array for " + currentTurn + " : is " + playedArray)
+
+		let win = this.state.winningCombos;
+
+		let winFlag = false
+		//let winCount = 0
+
+		for (let i = 0; i < win.length; i++) // looping winCombo Array, 9 elements
+    {
+      let winCombo = win[i]; // setting the i th  winComob to winCombo
+
+      //let winFlag = false
+			let matchCount = 0
+
+			for (let j = 0; j < winCombo.length;j++) //looping winCombo, 3 elements
+			{
+				  if (!playedArray.includes(winCombo[j]))
+					{
+						 winFlag = false;
+						 break;
+					}
+					else
+					{
+             matchCount++
+					}
+			}
+
+      if (matchCount == 3)
+			{
+				winFlag = true
+				break
+			}
+
+		}
+
+		console.log("WIN STATUS: " + winFlag)
+    return winFlag
 	}
 
 	render() {
@@ -88,10 +139,8 @@ class Board extends Component {
 			)
 		})
 
-		//TODO: The onClick functionatlity for each square needs to be built out.
-
 		return(
-			<div id="Board" onClick={this.handleClick}>
+			<div id="Board" onClick={this.handleClick} >
 				{ squares }
 			</div>
 		)

@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 
 class Square extends Component {
+
 	render() {
 		return(
-			<div>{this.props.content}</div>
+			<div>
+			   {this.props.content}
+			</div>
 		)
 	}
 }
