@@ -1,0 +1,23 @@
+#Board {
+	max-width: 800px;
+	margin: 50px auto;
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+#Board div {
+	min-width: 33%;
+	min-height: 150px;
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#Board div:hover {
+	/*background-image: url('https://www.alux.com/wp-content/uploads/2017/06/PSY-Net-Worth-e1497550923287.jpg');*/
+	/*background-size: cover;*/
+	background-color: pink;
+}
