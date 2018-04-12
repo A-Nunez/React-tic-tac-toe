@@ -1,0 +1,21 @@
+#Board {
+	max-width: 800px;
+	margin: 50px auto;
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+#Board div {
+	min-width: 33%;
+	min-height: 150px;
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#Board div:hover {
+	background-color: green;
+}
