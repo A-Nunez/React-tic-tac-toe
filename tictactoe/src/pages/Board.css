@@ -14,11 +14,15 @@
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	font-size: 65px;
+	font-size: 125px;
 }
 
 #Board div:hover {
 	/*background-image: url('https://www.alux.com/wp-content/uploads/2017/06/PSY-Net-Worth-e1497550923287.jpg');*/
 	/*background-size: cover;*/
-	background-color: pink;
+	background-color: forestgreen;
+}
+#Display {
+	text-align: center;
+	font-size: 43px;
 }

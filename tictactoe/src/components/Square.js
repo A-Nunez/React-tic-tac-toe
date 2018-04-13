@@ -4,7 +4,7 @@ class Square extends Component {
 
 	render() {
 		return(
-			<div>
+			<div onClick={this.props.onClick}>
 			   {this.props.content}
 			</div>
 		)
